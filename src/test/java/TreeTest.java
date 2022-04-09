@@ -42,8 +42,19 @@ class TreeTest {
 
     @Test
     void getCharacterEncodingFromTree() {
-        throw new UnsupportedOperationException("Test not implemented");
+        var charCodes = Tree.getCharacterEncodingFromTree(Tree.createTreeFromNodes(nodes));
+        assertEquals("0",charCodes.get('D'));
+        assertEquals("10",charCodes.get('C'));
+        assertEquals("111",charCodes.get('B'));
+        assertEquals("110",charCodes.get('A'));
     }
+
+    @Test
+    void getCharacterEncodingFromTree_when_tree_only_has_one_node() {
+        var charCodes = Tree.getCharacterEncodingFromTree(Tree.createTreeFromNodes(nodesTwo));
+        assertEquals("1",charCodes.get('A'));
+    }
+
 
     @Test
     void convertTreeIntoTreeRepresentation() {
