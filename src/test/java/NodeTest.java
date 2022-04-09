@@ -4,43 +4,54 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class NodeTest {
 
+    private final Node n1 = new Node(10,'a');
+    private final Node n2 = new Node(2,'z');
+
     @Test
     void getDataTest() {
-        throw new UnsupportedOperationException("Test not implemented");
+        assertEquals(10, n1.getData());
     }
 
     @Test
     void getCharacterTest() {
-        throw new UnsupportedOperationException("Test not implemented");
+        assertEquals('a', n1.getCharacter());
     }
 
     @Test
     void getLeftTest() {
-        throw new UnsupportedOperationException("Test not implemented");
+        assertNull(n1.getLeft());
+        n1.setLeft(n2);
+        assertEquals(n2,n1.getLeft());
     }
 
     @Test
     void getRightTest() {
-        throw new UnsupportedOperationException("Test not implemented");
+        assertNull(n1.getLeft());
+        n1.setLeft(n2);
+        assertEquals(n2,n1.getLeft());
     }
 
     @Test
     void setDataTest() {
-        throw new UnsupportedOperationException("Test not implemented");
+        n1.setData(11);
+        assertEquals(11, n1.getData());
     }
 
     @Test
     void setCharacterTest() {
-        throw new UnsupportedOperationException("Test not implemented");
+        n1.setCharacter('o');
+        assertEquals('o', n1.getCharacter());
     }
 
     @Test
     void setLeftTest() {
-        throw new UnsupportedOperationException("Test not implemented");
+        n1.setLeft(n2);
+        assertEquals(n2,n1.getLeft());
     }
 
     @Test
     void setRightTest() {
-        throw new UnsupportedOperationException("Test not implemented");
+        n1.setLeft(n2);
+        assertEquals(n2,n1.getLeft());
     }
 }
