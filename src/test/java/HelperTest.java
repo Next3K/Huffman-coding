@@ -119,6 +119,7 @@ class HelperTest {
 
     @Test
     void decodeMessageTest() {
-        throw new UnsupportedOperationException("Test not implemented");
+        String messageEncoded = "000001011";
+        assertEquals("ABCD", Helper.decodeMessage(characterEncoding,messageEncoded));
     }
 }
