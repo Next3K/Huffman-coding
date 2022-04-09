@@ -88,7 +88,12 @@ public class Helper {
     }
 
     public static String encodeMessage(Map<Character,String> encoding, String message) {
-        return null;
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < message.length(); i++) {
+            String str = encoding.get(message.charAt(i));
+            builder.append(str);
+        }
+        return builder.toString();
     }
 
     public static String decodeMessage(Map<Character,String> encoding, String message) {
