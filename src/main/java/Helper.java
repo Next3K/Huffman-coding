@@ -29,8 +29,42 @@ public class Helper {
         return frequency;
     }
 
+    /**
+     * Parse encoded text (bits + encoded tree representation) into two parts.
+     * @param encodedText encoded text (bits + encoded tree representation).
+     * @return pair of Strings: message bits and encoded tree representation.
+     */
     public static Pair<String,String> parseEncodedIntoTwoParts(String encodedText) {
-        return null;
+        if (encodedText.length() == 0) {
+            return null;
+        }
+
+        String messagePart = null;
+        String codePart = null;
+        boolean found = false;
+
+        for (int i = 0; i < encodedText.length(); i++) {
+            if (encodedText.charAt(i) != '0' && encodedText.charAt(i) != '1') {
+                found = true;
+
+                if (i == encodedText.length() - 1) {
+                    return new Pair<>(encodedText.substring(0,i - 1),encodedText.substring(i - 1));
+                }
+
+                int startCodeIndex = i - 2;
+                if (startCodeIndex != 0) {
+                    messagePart = encodedText.substring(0,startCodeIndex);
+                }
+                codePart = encodedText.substring(startCodeIndex);
+                break;
+            }
+        }
+
+        if (!found) { // did not find part encoding the tree
+            return new Pair<>(encodedText,null); // return message part and null
+        }
+
+        return new Pair<>(messagePart,codePart);
     }
 
     public static PriorityQueue<Node> createQueue(Map<Character,Integer> nodes) {
