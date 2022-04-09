@@ -1,3 +1,4 @@
+import javafx.util.Pair;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
@@ -39,7 +40,41 @@ class HelperTest {
 
     @Test
     void parseEncodedIntoTwoPartsTest() {
-        throw new UnsupportedOperationException("Test not implemented");
+        String input1 = "00101101001000101010D10C10B0A";
+        Pair<String, String> twoParts = Helper.parseEncodedIntoTwoParts(input1);
+        assertEquals("001011010010001010",twoParts.getKey());
+        assertEquals("10D10C10B0A",twoParts.getValue());
+    }
+
+    @Test
+    void parseEncodedIntoTwoPartsTest_null_when_empty_input() {
+        String input1 = "";
+        Pair<String, String> twoParts = Helper.parseEncodedIntoTwoParts(input1);
+        assertNull(twoParts);
+    }
+
+    @Test
+    void parseEncodedIntoTwoPartsTest_null_when_empty_message() {
+        String input1 = "10D10C10B0A";
+        Pair<String, String> twoParts = Helper.parseEncodedIntoTwoParts(input1);
+        assertNull(twoParts.getKey());
+        assertEquals("10D10C10B0A",twoParts.getValue());
+    }
+
+    @Test
+    void parseEncodedIntoTwoPartsTest_null_when_empty_code() {
+        String input1 = "001011010010001010";
+        Pair<String, String> twoParts = Helper.parseEncodedIntoTwoParts(input1);
+        assertEquals("001011010010001010",twoParts.getKey());
+        assertNull(twoParts.getValue());
+    }
+
+    @Test
+    void parseEncodedIntoTwoPartsTest_when_tree_only_has_one_node() {
+        String input1 = "00000000000000000000A"; // only letter 'A' present inside the message
+        Pair<String, String> twoParts = Helper.parseEncodedIntoTwoParts(input1);
+        assertEquals("0000000000000000000",twoParts.getKey());
+        assertEquals("0A",twoParts.getValue());
     }
 
     @Test
