@@ -3,6 +3,7 @@ import javafx.util.Pair;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class Helper {
 
@@ -67,8 +68,23 @@ public class Helper {
         return new Pair<>(messagePart,codePart);
     }
 
-    public static PriorityQueue<Node> createQueue(Map<Character,Integer> nodes) {
-        return null;
+    /**
+     * Creates a queue of Nodes.
+     * Ordering based on the frequency.
+     * @param mapping mapping of character and corresponding frequency.
+     * @return queue.
+     */
+    public static PriorityQueue<Node> createQueue(Map<Character,Integer> mapping) {
+        if (mapping == null) {
+            return null;
+        }
+
+        PriorityQueue<Node> queue = new PriorityQueue<>(mapping.size());
+        for (var elem : mapping.entrySet()) {
+            queue.add(new Node(elem.getValue(), elem.getKey()));
+        }
+
+        return queue;
     }
 
     public static String encodeMessage(Map<Character,String> encoding, String message) {
