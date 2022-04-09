@@ -9,13 +9,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class HelperTest {
 
-    private final Map<Character, Integer> frequencies = new HashMap<>();
+    private final Map<Character, Integer> frequencies = new HashMap<>(4);
+    private final Map<Character, String> characterEncoding = new HashMap<>(4);
 
     {
         frequencies.put('a',5);
         frequencies.put('c',1);
         frequencies.put('V',7);
         frequencies.put('R',3);
+
+        characterEncoding.put('A',"000");
+        characterEncoding.put('B',"001");
+        characterEncoding.put('C',"01");
+        characterEncoding.put('D',"1");
+
     }
 
 
@@ -106,7 +113,8 @@ class HelperTest {
 
     @Test
     void encodeMessageTest() {
-        throw new UnsupportedOperationException("Test not implemented");
+        String message = "ABCD";
+        assertEquals("000001011", Helper.encodeMessage(characterEncoding,message));
     }
 
     @Test
