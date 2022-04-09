@@ -1,9 +1,6 @@
 import javafx.util.Pair;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 public class Helper {
 
@@ -97,7 +94,25 @@ public class Helper {
     }
 
     public static String decodeMessage(Map<Character,String> encoding, String message) {
-        return null;
+        Set<Map.Entry<Character, String>> entries = encoding.entrySet();
+        int initialEntrySetSize = entries.size();
+        Map<String, Character> map = new HashMap<>(initialEntrySetSize);
+        for (var entry : entries) {
+            map.put(entry.getValue(),entry.getKey()); // exchange keys and values
+        }
+        assert initialEntrySetSize == map.size();
+
+        StringBuilder builder = new StringBuilder();
+
+        int borderIndex = 0;
+        for (int i = 1; i <= message.length(); i++) {
+            if (map.containsKey(message.substring(borderIndex,i))) {
+                builder.append(map.get(message.substring(borderIndex,i)));
+                borderIndex = i;
+            }
+        }
+
+        return builder.toString();
     }
 
 }
