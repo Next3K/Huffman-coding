@@ -54,4 +54,21 @@ class NodeTest {
         n1.setLeft(n2);
         assertEquals(n2,n1.getLeft());
     }
+
+    @Test
+    void compareToTest_return_negative_when_smaller() {
+        assertTrue(n2.compareTo(n1) < 0);
+    }
+
+    @Test
+    void compareToTest_return_positive_when_bigger() {
+        assertTrue(n1.compareTo(n2) > 0);
+    }
+
+    @Test
+    void compareToTest_return_zero_when_equal() {
+        n1.setData(10);
+        n2.setData(10);
+        assertEquals(0, n1.compareTo(n2));
+    }
 }
