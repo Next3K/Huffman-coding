@@ -1,11 +1,23 @@
 import javafx.util.Pair;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class HelperTest {
+
+    private final Map<Character, Integer> frequencies = new HashMap<>();
+
+    {
+        frequencies.put('a',5);
+        frequencies.put('c',1);
+        frequencies.put('V',7);
+        frequencies.put('R',3);
+    }
+
 
     @Test
     void getCharacterFrequencyTest() {
@@ -79,7 +91,17 @@ class HelperTest {
 
     @Test
     void createQueueTest() {
-        throw new UnsupportedOperationException("Test not implemented");
+        PriorityQueue<Node> queue = Helper.createQueue(frequencies);
+        assertEquals('c',queue.poll().getCharacter());
+        assertEquals('R',queue.poll().getCharacter());
+        assertEquals('a',queue.poll().getCharacter());
+        assertEquals('V',queue.poll().getCharacter());
+    }
+
+    @Test
+    void createQueueTest_returns_null_when_input_is_null() {
+        PriorityQueue<Node> queue = Helper.createQueue(null);
+        assertNull(queue);
     }
 
     @Test
