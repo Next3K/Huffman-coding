@@ -84,6 +84,12 @@ public class Helper {
         return queue;
     }
 
+    /**
+     * Encodes text input.
+     * @param encoding mapping of each character to unique code.
+     * @param message text to be encoded.
+     * @return encoded text, characters replaced with codes.
+     */
     public static String encodeMessage(Map<Character,String> encoding, String message) {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < message.length(); i++) {
@@ -93,6 +99,12 @@ public class Helper {
         return builder.toString();
     }
 
+    /**
+     * Decodes previously encoded text input.
+     * @param encoding mapping of characters to codes used to encode the initial text.
+     * @param message message to decode.
+     * @return decoded text, initial text before encoding.
+     */
     public static String decodeMessage(Map<Character,String> encoding, String message) {
         Set<Map.Entry<Character, String>> entries = encoding.entrySet();
         int initialEntrySetSize = entries.size();
