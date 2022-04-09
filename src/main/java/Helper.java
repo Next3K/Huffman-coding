@@ -1,11 +1,32 @@
 import javafx.util.Pair;
+
+import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
 public class Helper {
 
+    /**
+     * Counts frequency of characters inside text.
+     * @param text text to analyse.
+     * @return Map of characters and corresponding frequencies.
+     */
     public static Map<Character,Integer> getCharacterFrequency(String text) {
-        return null;
+        if (text == null || text.length() == 0) {
+            return null;
+        }
+
+        Map<Character, Integer> frequency = new HashMap<>(23);
+
+        for (int i = 0; i < text.length(); i++) {
+            if (!frequency.containsKey(text.charAt(i))) {
+                frequency.put(text.charAt(i), 1);
+            } else {
+                frequency.put(text.charAt(i), frequency.get(text.charAt(i)) + 1);
+            }
+        }
+
+        return frequency;
     }
 
     public static Pair<String,String> parseEncodedIntoTwoParts(String encodedText) {
