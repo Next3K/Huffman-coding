@@ -1,5 +1,8 @@
 import javafx.util.Pair;
 
+import java.util.Map;
+import java.util.PriorityQueue;
+
 public class Program {
 
     /**
@@ -8,7 +11,12 @@ public class Program {
      * @return Pair of strings: frequency table, encoded message.
      */
     public static Pair<String,String> encode(String text) {
-        return null;
+        PriorityQueue<Node> q = Helper.createQueue(Helper.getCharacterFrequency(text));
+        Node root  = Tree.createTreeFromNodes(q);
+        Map<Character, String> characterEncoding = Tree.getCharacterEncodingFromTree(root);
+        String encoded = Helper.encodeMessage(characterEncoding,text);
+        String frequencyTable = Tree.convertTreeIntoFrequencyString(root);
+        return new Pair<>(frequencyTable, encoded);
     }
 
     /**
