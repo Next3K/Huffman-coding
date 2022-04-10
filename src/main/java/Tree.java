@@ -2,6 +2,9 @@ import javafx.util.Pair;
 
 import java.util.*;
 
+/**
+ * Provides useful static functions related to Huffman tree.
+ */
 public class Tree {
 
     /**
@@ -27,7 +30,7 @@ public class Tree {
             q.poll();
             Node y = q.peek();
             q.poll();
-
+            assert y != null;
             Node f = new Node(x.getData() + y.getData(), '-');
 
             f.setLeft(x);
