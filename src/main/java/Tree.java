@@ -1,6 +1,6 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
+import javafx.util.Pair;
+
+import java.util.*;
 
 public class Tree {
 
@@ -84,11 +84,53 @@ public class Tree {
         return charCodes;
     }
 
+    /**
+     * Method converting tree to its string representation.
+     * String representation is a frequency table: example "D4C3B2A1"
+     * - D occurred 4 times
+     * - C occurred 3 times
+     * - B occurred 2 times
+     * - A occurred 1 times
+     * This frequency table can be converted into tree
+     * @param root root node of a tree.
+     * @return String representation.
+     */
     public static String convertTreeIntoTreeRepresentation(Node root) {
-        return null;
+        Map<Character, Integer> mapping = getTreeRepresentation(new HashMap<>(), root);
+        TreeSet<Pair<Character,Integer>> pairs =
+                new TreeSet<>((a,b) -> b.getValue() - a.getValue());
+        StringBuilder builder = new StringBuilder();
+        for (var entry : mapping.entrySet()) {
+            pairs.add(new Pair<>(entry.getKey(),entry.getValue()));
+        }
+        for (var entry : pairs) {
+            builder.append(entry.getKey()); // example D4 (letter 'D' * 4)
+            builder.append(entry.getValue());
+        }
+        return builder.toString();
     }
 
     public static Node convertTreeRepresentationIntoTree(String representation) {
         return null;
+    }
+
+    /**
+     * Recursive function doing all 'hard work' on behalf of Tree.convertTreeIntoTreeRepresentation(...).
+     * @param mapping Character and corresponding number of occurrences.
+     * @param node node to start.
+     * @return map with new entries.
+     */
+    private static Map<Character, Integer> getTreeRepresentation(Map<Character,Integer> mapping, Node node) {
+        char c = node.getCharacter();
+        if (c != '-') {
+            mapping.put(c,node.getData());
+        }
+        if (node.getRight() != null) {
+            getTreeRepresentation(mapping,node.getRight());
+        }
+        if (node.getLeft() != null) {
+            getTreeRepresentation(mapping,node.getLeft());
+        }
+        return mapping;
     }
 }
