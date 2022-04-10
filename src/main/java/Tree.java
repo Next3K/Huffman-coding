@@ -84,7 +84,7 @@ public class Tree {
         return charCodes;
     }
 
-    public static String convertTreeIntoTreeRepresentation() {
+    public static String convertTreeIntoTreeRepresentation(Node root) {
         return null;
     }
 
