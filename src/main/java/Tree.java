@@ -98,7 +98,7 @@ public class Tree {
     public static String convertTreeIntoTreeRepresentation(Node root) {
         Map<Character, Integer> mapping = getTreeRepresentation(new HashMap<>(), root);
         TreeSet<Pair<Character,Integer>> pairs =
-                new TreeSet<>((a,b) -> b.getValue() - a.getValue());
+                new TreeSet<>((a,b) -> b.getValue() - a.getValue()); // sort pairs by integer, the smallest first
         StringBuilder builder = new StringBuilder();
         for (var entry : mapping.entrySet()) {
             pairs.add(new Pair<>(entry.getKey(),entry.getValue()));
@@ -110,8 +110,21 @@ public class Tree {
         return builder.toString();
     }
 
-    public static Node convertTreeRepresentationIntoTree(String representation) {
-        return null;
+    public static Node convertFrequencyStringIntoTree(String representation) {
+
+        Map<Character, Integer> mapping = new HashMap<>(representation.length() / 17);
+
+        for (int i = 0; i < representation.length(); i += 17) {
+            Character c = representation.charAt(i);
+            String numberPart = representation.substring(i + 1, i + 17);
+            // convert 16 bits to number
+            // min value of counter = 1 (latter can occur min 1 time)
+            // max value of counter = 2^16 (latter can occur max 2^16 times)
+            int counter = Integer.parseInt(numberPart,2);
+            mapping.put(c,counter);
+        }
+
+        return createTreeFromNodes(Helper.createQueue(mapping)); // mapping -> queue -> tree
     }
 
     /**
