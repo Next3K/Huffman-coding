@@ -8,6 +8,17 @@ class TreeTest {
 
     private final PriorityQueue<Node> nodes = new PriorityQueue<>(4);
     private final PriorityQueue<Node> nodesTwo = new PriorityQueue<>(4);
+    private final String bigFrequencies =
+                    "X0000001000001000" +
+                    "F0000001000000100" +
+                    "Z0000001000000000" +
+                    "K0000000011110100" +
+                    "P0000000000010000" +
+                    "H0000000000001000" +
+                    "D0000000000000100" +
+                    "C0000000000000011" +
+                    "B0000000000000010" +
+                    "A0000000000000001";
 
     {
         nodes.add(new Node(4,'D'));
@@ -60,6 +71,12 @@ class TreeTest {
         Node root = Tree.createTreeFromNodes(nodes);
         assertEquals("D0000000000000100C0000000000000011B0000000000000010A0000000000000001",
                 Tree.convertTreeIntoFrequencyString(root));
+    }
+
+    @Test
+    void convertTreeIntoFrequencyStringTest_Long_Input_test() {
+        Node root = Tree.convertFrequencyStringIntoTree(this.bigFrequencies);
+        assertEquals(bigFrequencies, Tree.convertTreeIntoFrequencyString(root));
     }
 
     @Test
