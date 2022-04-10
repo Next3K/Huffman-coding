@@ -1,6 +1,9 @@
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Represents node in Huffman tree.
+ */
 public class Node implements Comparable<Node> {
 
     public Node(int data, char character) {
