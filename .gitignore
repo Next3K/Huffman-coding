@@ -1,2 +1,5 @@
 .idea/
 target/
+
+# ignore all txt files with phrase "run-app-" since they are generated/used during runtime
+*run-app-*.txt
