@@ -94,12 +94,15 @@ public class Tree {
      */
     public static String convertTreeIntoFrequencyString(Node root) {
         Map<Character, Integer> mapping = getTreeRepresentation(new HashMap<>(), root);
-        TreeSet<Pair<Character,Integer>> pairs =
-                new TreeSet<>((a,b) -> b.getValue() - a.getValue()); // sort pairs by integer, the smallest first
+        List<Pair<Character,Integer>> pairs = new ArrayList<>(mapping.size());
         StringBuilder builder = new StringBuilder();
         for (var entry : mapping.entrySet()) {
             pairs.add(new Pair<>(entry.getKey(),entry.getValue()));
         }
+
+        Comparator<Pair<Character, Integer>> cmp = Comparator.comparingInt(Pair::getValue);
+        pairs.sort(cmp.reversed()); // sort by values, most common letter first
+
         for (var entry : pairs) {
             builder.append(entry.getKey()); // letter
             int number = entry.getValue(); // frequency
