@@ -57,49 +57,6 @@ class HelperTest {
         assertNull(Helper.getCharacterFrequency(text1));
     }
 
-
-//    @Test
-//    void parseEncodedIntoTwoPartsTest() {
-//        String input1 = "001011010010001010D1C2B3A4";
-//        Pair<String, String> twoParts = Helper.parseEncodedIntoTwoParts(input1);
-//        assertEquals("001011010010001010",twoParts.getKey());
-//        assertEquals("D1C2B3A4",twoParts.getValue());
-//    }
-//
-//
-//    @Test
-//    void parseEncodedIntoTwoPartsTest_null_when_empty_input() {
-//        String input1 = "";
-//        Pair<String, String> twoParts = Helper.parseEncodedIntoTwoParts(input1);
-//        assertNull(twoParts);
-//    }
-//
-//
-//    @Test
-//    void parseEncodedIntoTwoPartsTest_null_when_empty_message() {
-//        String input1 = "D1C2B3A4";
-//        Pair<String, String> twoParts = Helper.parseEncodedIntoTwoParts(input1);
-//        assertNull(twoParts.getKey());
-//        assertEquals("D1C2B3A4",twoParts.getValue());
-//    }
-//
-//    @Test
-//    void parseEncodedIntoTwoPartsTest_null_when_empty_code() {
-//        String input1 = "001011010010001010";
-//        Pair<String, String> twoParts = Helper.parseEncodedIntoTwoParts(input1);
-//        assertEquals("001011010010001010",twoParts.getKey());
-//        assertNull(twoParts.getValue());
-//    }
-//
-//
-//    @Test
-//    void parseEncodedIntoTwoPartsTest_when_tree_only_has_one_node() {
-//        String input1 = "1111111111A10"; // only letter 'A' present inside the message
-//        Pair<String, String> twoParts = Helper.parseEncodedIntoTwoParts(input1);
-//        assertEquals("1111111111",twoParts.getKey());
-//        assertEquals("A10",twoParts.getValue());
-//    }
-
     @Test
     void createQueueTest() {
         PriorityQueue<Node> queue = Helper.createQueue(frequencies);
