@@ -1,7 +1,8 @@
-import javafx.util.Pair;
-
 import java.util.*;
 
+/**
+ * Class containing useful static functions.
+ */
 public class Helper {
 
     /**
@@ -26,31 +27,6 @@ public class Helper {
 
         return frequency;
     }
-
-    /**
-     * Parse encoded text (bits + frequency table) into two parts.
-     * @param encodedText encoded text (bits + frequency table).
-     * @return pair of Strings: message bits and frequency table.
-     */
-//    public static Pair<String,String> parseEncodedIntoTwoParts(String encodedText) {
-//        if (encodedText.length() == 0) {
-//            return null;
-//        }
-//
-//        for (int i = 0; i <  encodedText.length(); i++) {
-//            if (encodedText.charAt(i) != '0' && encodedText.charAt(i) != '1') {
-//                String message = encodedText.substring(0, i);
-//                if (message.length() != 0) {
-//                    return new Pair<>(message, encodedText.substring(i));
-//                } else {
-//                    return new Pair<>(null, encodedText.substring(i));
-//                }
-//            }
-//        }
-//
-//        return new Pair<>(encodedText,null); // input contains only message part
-//
-//    }
 
     /**
      * Creates a queue of Nodes.
