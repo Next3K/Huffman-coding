@@ -15,7 +15,7 @@ public class Server {
         ServerSocket serverSocket = new ServerSocket(1234);
 
 
-        while(true) {
+        while (true) {
             try {
                 socket = serverSocket.accept();
                 inputStreamReader = new InputStreamReader(socket.getInputStream());
@@ -35,7 +35,7 @@ public class Server {
 
                     String decodedText = Program.decode(m1, m2);
                     System.out.println("Decoded: " + decodedText);
-                    IOController.write("decoded",decodedText);
+                    IOController.write("run-app-decoded",decodedText);
 
                     bufferedWriter.write("received");
                     bufferedWriter.newLine();
