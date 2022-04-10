@@ -95,7 +95,7 @@ public class Tree {
      * @param root root node of a tree.
      * @return String representation.
      */
-    public static String convertTreeIntoTreeRepresentation(Node root) {
+    public static String convertTreeIntoFrequencyString(Node root) {
         Map<Character, Integer> mapping = getTreeRepresentation(new HashMap<>(), root);
         TreeSet<Pair<Character,Integer>> pairs =
                 new TreeSet<>((a,b) -> b.getValue() - a.getValue()); // sort pairs by integer, the smallest first
@@ -104,8 +104,11 @@ public class Tree {
             pairs.add(new Pair<>(entry.getKey(),entry.getValue()));
         }
         for (var entry : pairs) {
-            builder.append(entry.getKey()); // example D4 (letter 'D' * 4)
-            builder.append(entry.getValue());
+            builder.append(entry.getKey()); // letter
+            int number = entry.getValue();
+            String binaryRepresentation =
+                    String.format("%16s", Integer.toBinaryString(number)).replace(" ", "0");
+            builder.append(binaryRepresentation);
         }
         return builder.toString();
     }
