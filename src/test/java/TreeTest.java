@@ -56,10 +56,10 @@ class TreeTest {
 
 
     @Test
-    void convertTreeIntoTreeRepresentation() {
+    void convertTreeIntoFrequencyStringTest() {
         Node root = Tree.createTreeFromNodes(nodes);
         assertEquals("D0000000000000100C0000000000000011B0000000000000010A0000000000000001",
-                Tree.convertTreeIntoTreeRepresentation(root));
+                Tree.convertTreeIntoFrequencyString(root));
     }
 
     @Test
