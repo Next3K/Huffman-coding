@@ -28,9 +28,9 @@ public class Helper {
     }
 
     /**
-     * Parse encoded text (bits + encoded tree representation) into two parts.
-     * @param encodedText encoded text (bits + encoded tree representation).
-     * @return pair of Strings: message bits and encoded tree representation.
+     * Parse encoded text (bits + frequency table) into two parts.
+     * @param encodedText encoded text (bits + frequency table).
+     * @return pair of Strings: message bits and frequency table.
      */
     public static Pair<String,String> parseEncodedIntoTwoParts(String encodedText) {
         if (encodedText.length() == 0) {
