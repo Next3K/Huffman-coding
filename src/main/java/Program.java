@@ -26,6 +26,8 @@ public class Program {
      * @return decoded text.
      */
     public static String decode(String frequencyTable, String text) {
-        return null;
+        Node root = Tree.convertFrequencyStringIntoTree(frequencyTable);
+        Map<Character, String> characterEncoding = Tree.getCharacterEncodingFromTree(root);
+        return Helper.decodeMessage(characterEncoding,text);
     }
 }
