@@ -55,7 +55,6 @@ class TreeTest {
     }
 
 
-    //TODO change to bit encoding
     @Test
     void convertTreeIntoTreeRepresentation() {
         Node root = Tree.createTreeFromNodes(nodes);
@@ -63,7 +62,6 @@ class TreeTest {
                 Tree.convertTreeIntoTreeRepresentation(root));
     }
 
-    //TODO change to bit encoding
     @Test
     void convertFrequencyStringIntoTreeTest() {
         Node converted = Tree.convertFrequencyStringIntoTree(
