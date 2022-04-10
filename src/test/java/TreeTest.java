@@ -1,7 +1,5 @@
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.PriorityQueue;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -57,14 +55,25 @@ class TreeTest {
     }
 
 
+    //TODO change to bit encoding
     @Test
     void convertTreeIntoTreeRepresentation() {
         Node root = Tree.createTreeFromNodes(nodes);
-        assertEquals("D4C3B2A1",Tree.convertTreeIntoTreeRepresentation(root));
+        assertEquals("D0000000000000100C0000000000000011B0000000000000010A0000000000000001",
+                Tree.convertTreeIntoTreeRepresentation(root));
     }
 
+    //TODO change to bit encoding
     @Test
-    void convertTreeRepresentationIntoTree() {
-        throw new UnsupportedOperationException("Test not implemented");
+    void convertFrequencyStringIntoTreeTest() {
+        Node converted = Tree.convertFrequencyStringIntoTree(
+                "D0000000000000100C0000000000000011B0000000000000010A0000000000000001");
+        assertEquals('D', converted.getLeft().getCharacter());
+        Node right = converted.getRight(); // right node with two children
+        assertEquals('C', right.getLeft().getCharacter());
+        Node rightRight = right.getRight(); // right, right node with two children
+        assertEquals('B', rightRight.getRight().getCharacter());
+        assertEquals('A', rightRight.getLeft().getCharacter());
+
     }
 }
