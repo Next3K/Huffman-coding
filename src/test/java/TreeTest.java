@@ -18,6 +18,7 @@ class TreeTest {
         nodes.add(new Node(3,'C'));
 
         nodesTwo.add(new Node(10,'A'));
+
     }
 
     @Test
@@ -58,7 +59,8 @@ class TreeTest {
 
     @Test
     void convertTreeIntoTreeRepresentation() {
-        throw new UnsupportedOperationException("Test not implemented");
+        Node root = Tree.createTreeFromNodes(nodes);
+        assertEquals("D4C3B2A1",Tree.convertTreeIntoTreeRepresentation(root));
     }
 
     @Test
