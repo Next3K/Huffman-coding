@@ -2,7 +2,6 @@
 ## _Implementation of Huffman coding, compression algorithm_
 
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 Computer science university project.
 
